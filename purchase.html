@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购买与支持 - 智能播放调度系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 复用主站样式，确保风格一致 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #1a6dcc 0%, #0d4d9c 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo i { font-size: 2.2rem; }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover, nav a.active {
+            color: #ffde59;
+            border-bottom: 2px solid #ffde59;
+        }
+        .cta-button {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #ffde59;
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ffde59;
+        }
+        .section-title {
+            text-align: center;
+            margin: 80px 0 50px;
+            color: #0d4d9c;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffde59;
+            border-radius: 2px;
+        }
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        /* 购买页面特有样式 */
+        .pricing-simple {
+            max-width: 600px;
+            margin: 0 auto 80px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-top: 5px solid #ffde59;
+        }
+        
+        .price-badge {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .main-price {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #0d4d9c;
+            margin: 20px 0;
+        }
+        
+        .price-note {
+            color: #777;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features-simple {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+            padding: 0 20px;
+        }
+        
+        .pricing-features-simple li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-features-simple li i {
+            color: #2ecc71;
+            font-size: 1.3rem;
+        }
+        
+        .pricing-features-simple li:last-child {
+            border-bottom: none;
+        }
+        
+        .buy-button-simple {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a6dcc 0%, #0d4d9c 100%);
+            color: white;
+            padding: 18px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .buy-button-simple:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-trial {
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+        
+        .btn-download {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid #2ecc71;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-download:hover {
+            background-color: transparent;
+            color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e6f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .contact-icon i {
+            font-size: 2.5rem;
+            color: #1a6dcc;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #0d4d9c;
+        }
+        
+        .contact-info {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #1a6dcc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: 600;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0 80px;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 20%;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid #4dabf7;
+            color: #4dabf7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #0d4d9c;
+        }
+        
+        .step p {
+            color: #666;
+            padding: 0 10px;
+        }
+        
+        footer {
+            background-color: #0d4d9c;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ffde59;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: #ffde59;
+            width: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .pricing-simple {
+                padding: 30px 20px;
+            }
+            .main-price {
+                font-size: 3rem;
+            }
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .process-steps:before {
+                display: none;
+            }
+            .step {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <div>
+                        <h1>智能播放调度系统</h1>
+                        <span>专业定时广播与播放软件</span>
+                    </div>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#features">核心功能</a></li>
+                        <li><a href="index.html#scenarios">应用场景</a></li>
+                        <li><a href="purchase.html" class="active">购买与支持</a></li>
+                        <li><a href="index.html#faq">常见问题</a></li>
+                        <li><a href="index.html#download">软件下载</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="cta-button">免费下载</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 下载试用版区域 -->
+    <section class="download-trial">
+        <div class="container">
+            <div class="section-title">
+                <h2>免费下载7天试用版</h2>
+                <p>体验软件全部功能，满意后再购买正式版</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download" style="padding: 18px 50px; font-size: 1.3rem;">
+                    <i class="fas fa-download"></i> 下载7天免费试用版
+                </a>
+                <p style="color: #666; margin-top: 20px; font-size: 1.1rem;">试用版包含软件全部功能，购买后可一键激活为正式版</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 单一价格方案 -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>简单透明的价格</h2>
+                <p>一个版本，一次购买，永久使用</p>
+            </div>
+            
+            <div class="pricing-simple">
+                <div class="price-badge">永久授权</div>
+                <h3 style="font-size: 2rem; margin-bottom: 10px; color: #0d4d9c;">智能播放调度系统 完整版</h3>
+                <div class="main-price">¥600</div>
+                <p class="price-note">一次性付款，永久使用，终身免费基础更新</p>
+                
+                <ul class="pricing-features-simple">
+                    <li><i class="fas fa-check"></i> 完整定时播放与调度功能</li>
+                    <li><i class="fas fa-check"></i> 全格式视频音频支持</li>
+                    <li><i class="fas fa-check"></i> 紧急插播与定时插播功能</li>
+                    <li><i class="fas fa-check"></i> 流媒体与网络广播支持</li>
+                    <li><i class="fas fa-check"></i> 大屏优化与多显示器支持</li>
+                    <li><i class="fas fa-check"></i> 终身免费基础更新</li>
+                    <li><i class="fas fa-check"></i> 一年免费技术支持</li>
+                    <li><i class="fas fa-check"></i> 同一PC无限次重装激活</li>
+                </ul>
+                
+                <p style="color: #666; margin: 25px 0; font-size: 1.1rem;"><strong>适用场景：</strong>校园广播、商场背景音乐、企业信息发布、数字标牌等</p>
+                
+                <a href="#contact" class="buy-button-simple">
+                    <i class="fas fa-shopping-cart"></i> 立即购买 (¥600永久授权)
+                </a>
+                
+                <p style="color: #777; margin-top: 20px; font-size: 0.95rem;">购买后24小时内通过邮件发送激活码</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 购买流程 -->
+    <section style="background-color: #f0f8ff; padding: 80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>简单三步，完成购买</h2>
+                <p>清晰的购买流程，让您快速获得软件授权</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>下载试用</h4>
+                    <p>下载30天免费试用版，体验软件全部功能</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>完成购买</h4>
+                    <p>通过下方联系方式购买，获得软件激活码</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>激活使用</h4>
+                    <p>在试用版软件中输入激活码，升级为永久正式版</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#contact" class="buy-button-simple" style="display: inline-block; width: auto; padding: 18px 60px;">
+                    立即开始购买流程
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系与支持 -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们完成购买</h2>
+                <p>多种购买方式，随时为您提供支持</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- 销售咨询 -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>销售咨询</h3>
+                    <p class="contact-info"><i class="fas fa-phone"></i> 咨询电话：13632716632</p>
+                    <!--<p class="contact-info"><i class="fas fa-phone"></i> 直线电话：<a href="tel:010-12345678">010-12345678</a></p>-->
+                    <p class="contact-info"><i class="fas fa-weixin"></i> 销售微信：13632716632</p>
+                    <p class="contact-info"><i class="fas fa-envelope"></i> 商务邮箱：<a href="mailto:getpdffusion7300@gmail.com">getpdffusion7300@gmail.com</a></p>
+                    <!--<div class="qr-code">
+                        <div>微信二维码</div>
+                    </div>
+                    <p><strong>工作时间：</strong>周一至周五 9:00-18:00</p>-->
+                </div>
+                
+                <!-- 技术支持 -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>技术支持</h3>
+                    <p class="contact-info"><i class="fab fa-qq"></i> 技术支持QQ：2338125197</p>
+                    <p class="contact-info"><i class="fas fa-weixin"></i> 技术微信：13632716632</p>
+                    <p class="contact-info"><i class="fas fa-envelope"></i> 技术支持邮箱：2338125197@qq.com</p>
+                    <!--<p class="contact-info"><i class="fas fa-globe"></i> 知识库：<a href="https://help.playscheduler.cn">help.playscheduler.cn</a></p>
+                    <div class="qr-code">
+                        <div>QQ二维码</div>
+                    </div>
+                    <p><strong>支持时间：</strong>工作日 9:00-21:00，周末 10:00-18:00</p> -->
+                </div>
+                
+                <!-- 购买渠道 -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  <h3>购买渠道</h3>
+                    <p class="contact-info"><i class="fas fa-store"></i> <strong>天空云共享软件官方商店：</strong></p>
+                    <p style="margin-bottom: 15px;"><a href="https://gumroad.com/l/smartscheduler" target="_blank">https://gumroad.com/l/smartscheduler</a></p>
+                    
+                    <p class="contact-info"><i class="fas fa-university"></i> <strong>国内对公账户：</strong></p>
+                    <p style="text-align: left; margin: 15px 0; padding: 15px; background-color: #f9f9f9; border-radius: 8px;">
+                        公司名称：佛山市南海区伊贝姬文艺创作工作室<br>
+                        开户银行：中国工商银行深圳市塘尾支行<br>
+                        银行账号：621226 4000046623753
+                    </p>
+                    
+                    <p class="contact-info"><i class="fas fa-map-marker-alt"></i> <strong>公司地址：</strong></p>
+                  <p>深圳市宝安区凤凰西区186号4层</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">智能播放调度系统</div>
+                    <p>一款专业的Windows定时播放软件，支持视频、音频、流媒体全屏自动播放，具备插播功能。广泛应用于校园广播系统、自动打铃、商场背景音乐、数字标牌等场景。</p>
+                    <p>精准定时，稳定可靠，¥600永久授权。</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">返回首页</a></li>
+                        <li><a href="index.html#features">核心功能</a></li>
+                        <li><a href="index.html#scenarios">应用场景</a></li>
+                        <li><a href="purchase.html">购买与支持</a></li>
+                        <li><a href="index.html#faq">常见问题</a></li>
+                        <li><a href="index.html#download">软件下载</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>购买咨询与支持</h3>
+                    <p><i class="fas fa-tag"></i> 价格：¥600 (永久授权)</p>
+                    <p><i class="fas fa-weixin"></i> 官方微信：13632716632</p>
+                    <p><i class="fab fa-qq"></i> 技术支持QQ：2338125197</p>
+                    <p><i class="fas fa-phone"></i> 咨询电话：13632716632</p>
+                    <p><i class="fas fa-envelope"></i> 商务邮箱：getpdffusion7300@gmail.com</p>
+                    <p><i class="fas fa-globe"></i> 英文官网：<a href="https://www.smartschedule365.com/" style="color:#ffde59;">www.smartschedule365.com/</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 智能播放调度系统 版权所有 |   佛山市南海区伊贝姬文艺创作工作室</p>
+				<!-- <p>© 2023 智能播放调度系统 版权所有 | 粤ICP备12345678号-1 | 佛山市南海区伊贝姬文艺创作工作室</p> -->
+                <p>专业定时播放软件解决方案提供商 | ¥600永久授权</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 复制银行账号功能
+        document.querySelectorAll('.contact-info').forEach(info => {
+            if(info.textContent.includes('银行账号')) {
+                const accountInfo = info.parentElement;
+                accountInfo.style.cursor = 'pointer';
+                accountInfo.title = '点击复制银行账号';
+                accountInfo.addEventListener('click', function() {
+                    const accountNumber = '0200 1234 5678 9012 345';
+                    navigator.clipboard.writeText(accountNumber).then(() => {
+                        alert('银行账号已复制到剪贴板');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

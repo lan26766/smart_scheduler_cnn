@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="专业Windows定时播放软件，支持视频音频流媒体全屏自动播放，具备定时插播、紧急插播功能。适用于校园广播系统、自动打铃、商场背景音乐、数字标牌等场景。">
+    <meta name="keywords" content="定时播放软件,插播功能,全屏播放器,校园广播系统,自动打铃软件,背景音乐系统,视频轮播软件,Windows播放调度,数字标牌软件">
+    <title>智能播放调度系统 - 专业定时广播与播放软件_支持插播功能</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #1a6dcc 0%, #0d4d9c 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #ffde59;
+            border-bottom: 2px solid #ffde59;
+        }
+        
+        .cta-button {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #ffde59;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ffde59;
+        }
+        
+        /* 首屏区域 */
+        .hero {
+            background: linear-gradient(rgba(13, 77, 156, 0.9), rgba(13, 77, 156, 0.8)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+        
+        .feature-highlight {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .feature-highlight span {
+            background-color: rgba(255, 222, 89, 0.2);
+            color: #ffde59;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 222, 89, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .hero strong {
+            color: #ffde59;
+            font-weight: 700;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid #ffde59;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #ffde59;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: #0d4d9c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-download {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid #2ecc71;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-download:hover {
+            background-color: transparent;
+            color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 核心功能区域 */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 50px;
+            color: #0d4d9c;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffde59;
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .feature-card:nth-child(1) .feature-icon {
+            background-color: #e6f2ff;
+        }
+        
+        .feature-card:nth-child(2) .feature-icon {
+            background-color: #fff0e6;
+        }
+        
+        .feature-card:nth-child(3) .feature-icon {
+            background-color: #e6fff2;
+        }
+        
+        .feature-card:nth-child(4) .feature-icon {
+            background-color: #f0e6ff;
+        }
+        
+        .feature-card:nth-child(5) .feature-icon {
+            background-color: #fffae6;
+        }
+        
+        .feature-icon i {
+            font-size: 2.5rem;
+        }
+        
+        .feature-card:nth-child(1) .feature-icon i {
+            color: #1a6dcc;
+        }
+        
+        .feature-card:nth-child(2) .feature-icon i {
+            color: #ff8c42;
+        }
+        
+        .feature-card:nth-child(3) .feature-icon i {
+            color: #2ecc71;
+        }
+        
+        .feature-card:nth-child(4) .feature-icon i {
+            color: #9b59b6;
+        }
+        
+        .feature-card:nth-child(5) .feature-icon i {
+            color: #f1c40f;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+            color: #0d4d9c;
+        }
+        
+        .feature-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .feature-benefits {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .feature-benefits li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-benefits li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-benefits li i {
+            color: #4dabf7;
+            font-size: 1.1rem;
+        }
+        
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background-color: #f0f8ff;
+            color: #0d4d9c;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        /* 应用场景区域 */
+        .scenarios {
+            background-color: #f0f8ff;
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .scenario-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .scenario-tab {
+            background-color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0d4d9c;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .scenario-tab.active {
+            background-color: #0d4d9c;
+            color: white;
+            border-color: #0d4d9c;
+        }
+        
+        .scenario-tab:hover:not(.active) {
+            border-color: #0d4d9c;
+        }
+        
+        .scenario-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .scenario-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0d4d9c;
+        }
+        
+        .scenario-content ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .scenario-content li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .scenario-content strong {
+            color: #0d4d9c;
+        }
+        
+        /* 截图展示区域 */
+        .screenshots {
+            margin-bottom: 80px;
+        }
+        
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .screenshot-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s;
+        }
+        
+        .screenshot-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .screenshot-caption {
+            padding: 15px;
+            background-color: white;
+            text-align: center;
+            font-weight: 600;
+            color: #0d4d9c;
+        }
+        
+        /* 常见问题区域 */
+        .faq {
+            background-color: #f0f8ff;
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0d4d9c;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* 页脚区域 */
+        footer {
+            background-color: #0d4d9c;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ffde59;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: #ffde59;
+            width: 20px;
+        }
+        
+        .footer-keywords {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+        }
+        
+        .footer-keywords p {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffde59;
+        }
+        
+        .keyword-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .keyword-cloud span {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .scenario-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .scenario-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <div>
+                        <h1>智能播放调度系统</h1>
+                        <span>专业定时广播与播放软件</span>
+                    </div>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">首页</a></li>
+                        <li><a href="#features">核心功能</a></li>
+                        <li><a href="#scenarios">应用场景</a></li>
+                        <li><a href="purchase.html">购买与支持</a></li>
+                        <li><a href="#screenshots">界面截图</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="cta-button">立即下载</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首屏区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>智能播放调度系统 - 专业定时广播与播放软件</h1>
+            <h2>支持视频、音频、流媒体的全屏定时自动播放与插播功能</h2>
+            
+            <div class="feature-highlight">
+                <span>定时任务播放</span>
+                <span>全屏播放支持</span>
+                <span>流媒体兼容</span>
+                <span>紧急插播功能</span>
+                <span>定时任务插播</span>
+                <span>大屏优化</span>
+            </div>
+            
+            <p>一款专业的<strong>Windows定时播放软件</strong>，支持<strong>视频轮播</strong>、<strong>背景音乐</strong>定时播放、<strong>全屏播放</strong>与<strong>插播功能</strong>。广泛应用于<strong>校园广播系统</strong>、<strong>学校自动打铃</strong>、<strong>商场背景音乐系统</strong>、数字标牌、企业信息发布等场景。</p>
+            
+            <div class="hero-buttons">
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download">
+                    <i class="fas fa-download"></i> 免费下载试用版
+                </a>
+                <a href="purchase.html" class="btn-primary">立即购买 (¥600永久授权)</a>
+                <a href="#features" class="btn-secondary">查看全部功能</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能区域 - 插播功能作为其中之一 -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心功能特点</h2>
+                <p>智能播放调度系统提供全方位的定时播放解决方案，满足多种场景需求</p>
+            </div>
+            
+            <div class="features">
+                <!-- 功能1：精准定时 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>精准定时任务</h3>
+                    <p>可设置每日、每周循环播放计划，实现24小时无人值守自动播放。适用于学校自动打铃、商场营业时间背景音乐播放等场景。</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 支持复杂时间表设置</li>
+                        <li><i class="fas fa-check-circle"></i> 节假日特殊排期</li>
+                        <li><i class="fas fa-check-circle"></i> 多任务并行执行</li>
+                        <li><i class="fas fa-check-circle"></i> 时间精度达秒级</li>
+                    </ul>
+                </div>
+                
+                <!-- 功能2：全格式兼容 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>全格式兼容播放</h3>
+                    <p>支持本地视频音频文件、网络流媒体(如央视直播、B站视频)、在线音乐平台内容。是专业的全屏播放器与背景音乐系统。</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 主流视频音频格式全支持</li>
+                        <li><i class="fas fa-check-circle"></i> 网络流媒体实时播放</li>
+                        <li><i class="fas fa-check-circle"></i> 播放列表智能管理</li>
+                        <li><i class="fas fa-check-circle"></i> 音量均衡与淡入淡出</li>
+                    </ul>
+                </div>
+                
+                <!-- 功能3：大屏优化 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>大屏专属优化</h3>
+                    <p>专为大屏幕、广告机、电视墙优化，提供稳定无干扰的全屏播放体验，适合商场广告播放、校园信息发布、会议宣传片展示。</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 多显示器扩展支持</li>
+                        <li><i class="fas fa-check-circle"></i> 4K超高清播放优化</li>
+                        <li><i class="fas fa-check-circle"></i> 开机自启动播放</li>
+                        <li><i class="fas fa-check-circle"></i> 远程管理与监控</li>
+                    </ul>
+                </div>
+                
+                <!-- 功能4：紧急插播 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>紧急插播功能</h3>
+                    <p>遇到紧急情况时，可一键中断当前播放内容，优先播报紧急通知或安全提示。播放完毕后自动恢复原播放计划。</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 一键触发立即中断</li>
+                        <li><i class="fas fa-check-circle"></i> 最高播放优先级</li>
+                        <li><i class="fas fa-check-circle"></i> 预设紧急内容库</li>
+                        <li><i class="fas fa-check-circle"></i> 自动恢复原计划</li>
+                    </ul>
+                </div>
+                
+                <!-- 功能5：定时插播 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>定时任务插播</h3>
+                    <p>可在常规播放计划中预先设置插播任务，在指定时间自动插入重要内容，播放完毕后自动返回原播放进度。</p>
+                    
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check-circle"></i> 单次/每日/每周插播计划</li>
+                        <li><i class="fas fa-check-circle"></i> 插播后智能续播</li>
+                        <li><i class="fas fa-check-circle"></i> 任务可临时启用/禁用</li>
+                        <li><i class="fas fa-check-circle"></i> 与主播放计划无缝整合</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 在功能区域后添加下载按钮 -->
+            <div class="download-section">
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-download"></i> 立即下载体验全部功能
+                </a>
+                <p style="color: #666; margin-top: 15px;">7天免费试用，包含软件全部功能</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景区域 -->
+    <section class="scenarios" id="scenarios">
+        <div class="container">
+            <div class="section-title">
+                <h2>主要应用场景</h2>
+                <p>智能播放调度系统适用于教育、商业、企业等多种场景</p>
+            </div>
+            
+            <div class="scenario-tabs">
+                <div class="scenario-tab active" data-tab="education">教育领域</div>
+                <div class="scenario-tab" data-tab="business">商业零售</div>
+                <div class="scenario-tab" data-tab="enterprise">企业与公共空间</div>
+            </div>
+            
+            <div class="scenario-content" id="education-content">
+                <h3>校园智能广播系统与自动打铃解决方案</h3>
+                <p>本软件是专业的<strong>学校自动打铃软件</strong>，可实现上下课铃声、眼保健操音乐、升旗仪式音乐的自动播放。同时作为<strong>校园广播系统</strong>核心，支持课间音乐、通知广播、英语听力考试的定时播放。</p>
+                
+                <ul>
+                    <li>上下课自动打铃系统</li>
+                    <li>校园背景音乐播放系统</li>
+                    <li>学校升旗仪式音乐自动播放</li>
+                    <li>英语听力考试播放软件</li>
+                    <li>校园应急广播通知系统</li>
+                    <li>多媒体教室集中控制播放</li>
+                </ul>
+                
+                <p><strong>插播功能应用：</strong>利用紧急插播功能发布紧急通知，使用定时插播在课间自动播放天气提醒、活动通知等内容。</p>
+                
+                <!-- 应用场景下载按钮 -->
+                <div style="text-align: center; margin: 30px 0;">
+                    <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-download"></i> 下载校园广播系统试用版
+                    </a>
+                    <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用7天，体验完整校园广播功能</p>
+                </div>
+                
+                <div class="keyword-list">
+                    <span class="keyword-tag">校园广播系统</span>
+                    <span class="keyword-tag">学校自动打铃软件</span>
+                    <span class="keyword-tag">教室音乐播放系统</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 截图展示区域 -->
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <div class="section-title">
+                <h2>软件界面截图</h2>
+                <p>直观的操作界面，轻松管理所有播放任务</p>
+            </div>
+            
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="智能播放调度系统主界面 - 定时播放软件操作面板">
+                    <div class="screenshot-caption">主控制面板</div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="播放计划编辑界面 - 校园广播系统时间表设置">
+                    <div class="screenshot-caption">播放计划编辑</div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="插播功能设置界面 - 紧急插播与定时插播管理">
+                    <div class="screenshot-caption">插播功能设置</div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="全屏播放效果 - 视频轮播软件大屏展示">
+                    <div class="screenshot-caption">全屏播放效果</div>
+                </div>
+            </div>
+            
+            <!-- 截图区域后添加下载按钮 -->
+            <div class="download-section">
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-download"></i> 下载软件体验完整界面
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section id="download" style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 80px 0;">
+        <div class="container">
+            <div class="section-title" style="color: white;">
+                <h2>立即下载试用版</h2>
+                <p style="color: rgba(255,255,255,0.9);">7天免费试用，体验软件全部功能</p>
+            </div>
+            
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div style="background-color: rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; margin-bottom: 40px;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">智能播放调度系统 v2.0</h3>
+                    <p style="margin-bottom: 25px; font-size: 1.1rem;">包含软件全部功能：定时播放、全屏播放、流媒体支持、紧急插播、定时插播等</p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 10px;">30</div>
+                            <div>天免费试用</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 10px;">¥600</div>
+                            <div>永久授权价格</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 10px;">100%</div>
+                            <div>功能完整体验</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-primary" style="background-color: white; color: #27ae60; padding: 15px 40px;">
+                            <i class="fas fa-download"></i> 下载Windows安装包 (64位)
+                        </a>
+                        <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-secondary" style="border-color: white; color: white; padding: 15px 40px;">
+                            <i class="fas fa-download"></i> 下载Windows安装包 (32位)
+                        </a>
+                    </div>
+                </div>
+                
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">系统要求：Windows 7/8/10/11，2GB内存，500MB硬盘空间</p>
+                
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="purchase.html" class="cta-button" style="background-color: #ffde59; color: #0d4d9c;">
+                        购买正式版 (¥600永久授权)
+                    </a>
+                    <a href="purchase.html#contact" class="btn-secondary" style="border-color: white; color: white;">
+                        获取批量授权优惠
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题区域 -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <p>以下是一些用户常见问题，如需更多帮助请随时联系我们</p>
+            </div>
+            
+            <div class="faq-container">
+                <!-- 问题1 -->
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>这款软件能用作学校自动打铃系统吗？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>完全可以。本软件是专业的<strong>学校自动打铃软件</strong>，可精确设置每天上下课、课间操的铃声播放时间，支持不同季节作息表调整，完全满足<strong>校园广播系统</strong>的打铃需求。已在全国多所学校成功部署使用。</p>
+                    </div>
+                </div>
+                
+                <!-- 问题2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>插播功能会打断当前播放吗？如何恢复？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>是的，紧急插播会立即暂停当前播放内容，优先播放紧急通知。插播内容播放完毕后，系统会自动恢复原播放计划，从被打断的位置继续播放，确保内容完整性。</p>
+                        <p>定时任务插播则是在预设时间自动插入内容，播放后同样会自动返回原播放进度。</p>
+                    </div>
+                </div>
+                
+                <!-- 问题3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>软件支持断网环境使用吗？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>支持。作为本地<strong>Windows定时播放软件</strong>，所有播放任务和插播功能均在本地执行，不依赖网络连接。断网情况下仍能按照预设时间表稳定播放，特别适合网络不稳定的校园、工厂等环境。</p>
+                    </div>
+                </div>
+                
+                <!-- 问题4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>支持哪些视频和音频格式？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>支持MP4、AVI、WMV、MP3、WAV、FLAC等常见格式，同时支持主流网络流媒体协议(RTMP、HLS等)，满足<strong>视频轮播软件</strong>和<strong>全屏播放器</strong>的多媒体需求。持续更新支持新的媒体格式。</p>
+                    </div>
+                </div>
+                
+                <!-- 问题5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>购买后如何获得永久授权？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>购买后您将收到软件激活码，在试用版软件中输入激活码即可升级为正式版。正式版永久授权，包含终身免费基础更新和技术支持。如需重装系统，同一激活码可重复激活使用。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 常见问题后添加下载按钮 -->
+            <div class="download-section">
+                <a href="https://www.dingshibaofang.com/files/PlaySchedulerSetup-x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-download"></i> 立即下载7天免费试用版
+                </a>
+                <p style="color: #666; margin-top: 15px;">试用版包含软件全部功能，购买后可一键激活为正式版</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚区域 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">智能播放调度系统</div>
+                    <p>一款专业的Windows定时播放软件，支持视频、音频、流媒体全屏自动播放，具备插播功能。广泛应用于校园广播系统、自动打铃、商场背景音乐、数字标牌等场景。</p>
+                    <p>精准定时，稳定可靠，是您播放调度管理的理想选择。</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">返回顶部</a></li>
+                        <li><a href="#features">核心功能</a></li>
+                        <li><a href="#scenarios">应用场景</a></li>
+                        <li><a href="purchase.html">购买与支持</a></li>
+                        <li><a href="#screenshots">界面截图</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#download">软件下载</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>购买咨询与支持</h3>
+                    <p><i class="fas fa-shopping-cart"></i> 价格：¥600 (永久授权)</p>
+                    <p><i class="fas fa-weixin"></i> 官方微信：13632716632</p>
+                    <p><i class="fab fa-qq"></i> 技术支持QQ：2338125197@qq.com</p>
+                    <p><i class="fas fa-phone"></i> 咨询电话：13632716632</p>
+                    <p><i class="fas fa-envelope"></i> 商务邮箱：getpdffusion7300@gmail.com</p>
+                    <p><i class="fas fa-globe"></i> 英文官网：www.smartschedule365.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-keywords">
+                <p>适用于：</p>
+                <div class="keyword-cloud">
+                    <span>校园广播系统</span>
+                    <span>学校自动打铃软件</span>
+                    <span>商场背景音乐系统</span>
+                    <span>视频轮播软件</span>
+                    <span>数字标牌软件</span>
+                    <span>全屏播放器</span>
+                    <span>定时播放软件</span>
+                    <span>紧急插播功能</span>
+                    <span>定时任务插播</span>
+                    <span>背景音乐系统</span>
+                    <span>Windows播放调度</span>
+                    <span>广告机播放软件</span>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+				<!-- <p>© 2023 智能播放调度系统 版权所有 | 京ICP备12345678号-1 | 北京智能播控科技有限公司</p> -->
+                <p>© 2023 智能播放调度系统 版权所有 | 佛山市南海区伊贝姬文艺创作工作室</p>
+                <p>专业定时播放软件解决方案提供商</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 常见问题折叠功能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+        
+        // 应用场景切换功能
+        document.querySelectorAll('.scenario-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有标签的活动状态
+                document.querySelectorAll('.scenario-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // 添加当前标签的活动状态
+                tab.classList.add('active');
+                
+                // 获取当前标签对应的内容ID
+                const tabId = tab.getAttribute('data-tab');
+                
+                // 更新内容区域
+                const contentDiv = document.getElementById('education-content');
+                if (tabId === 'education') {
+                    contentDiv.innerHTML = `
+                        <h3>校园智能广播系统与自动打铃解决方案</h3>
+                        <p>本软件是专业的<strong>学校自动打铃软件</strong>，可实现上下课铃声、眼保健操音乐、升旗仪式音乐的自动播放。同时作为<strong>校园广播系统</strong>核心，支持课间音乐、通知广播、英语听力考试的定时播放。</p>
+                        
+                        <ul>
+                            <li>上下课自动打铃系统</li>
+                            <li>校园背景音乐播放系统</li>
+                            <li>学校升旗仪式音乐自动播放</li>
+                            <li>英语听力考试播放软件</li>
+                            <li>校园应急广播通知系统</li>
+                            <li>多媒体教室集中控制播放</li>
+                        </ul>
+                        
+                        <p><strong>插播功能应用：</strong>利用紧急插播功能发布紧急通知，使用定时插播在课间自动播放天气提醒、活动通知等内容。</p>
+                        
+                        <!-- 应用场景下载按钮 -->
+                        <div style="text-align: center; margin: 30px 0;">
+                            <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-download"></i> 下载校园广播系统试用版
+                            </a>
+                            <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整校园广播功能</p>
+                        </div>
+                        
+                        <div class="keyword-list">
+                            <span class="keyword-tag">校园广播系统</span>
+                            <span class="keyword-tag">学校自动打铃软件</span>
+                            <span class="keyword-tag">教室音乐播放系统</span>
+                        </div>
+                    `;
+                } else if (tabId === 'business') {
+                    contentDiv.innerHTML = `
+                        <h3>商场背景音乐系统与广告轮播</h3>
+                        <p>专业的<strong>商场背景音乐系统</strong>软件，可根据营业时间自动播放背景音乐、促销信息。同时支持多终端<strong>视频轮播</strong>，是商场广告机、门店宣传屏的理想选择。</p>
+                        
+                        <ul>
+                            <li>商场营业时间音乐自动播放</li>
+                            <li>门店广告视频轮播系统</li>
+                            <li>餐厅背景音乐管理系统</li>
+                            <li>促销信息定时播报软件</li>
+                            <li>多区域独立音量控制</li>
+                            <li>节假日特殊播放计划</li>
+                        </ul>
+                        
+                        <p><strong>插播功能应用：</strong>使用紧急插播发布消防安全提示，通过定时插播在特定时间自动播放限时促销信息。</p>
+                        
+                        <!-- 应用场景下载按钮 -->
+                        <div style="text-align: center; margin: 30px 0;">
+                            <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-download"></i> 下载商业背景音乐系统试用版
+                            </a>
+                            <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整背景音乐调度功能</p>
+                        </div>
+                        
+                        <div class="keyword-list">
+                            <span class="keyword-tag">商场背景音乐系统</span>
+                            <span class="keyword-tag">视频轮播软件</span>
+                            <span class="keyword-tag">广告机播放软件</span>
+                        </div>
+                    `;
+                } else if (tabId === 'enterprise') {
+                    contentDiv.innerHTML = `
+                        <h3>企业信息发布与数字标牌</h3>
+                        <p>适用于企业会议室宣传片播放、展厅导览系统、工厂安全提示播报。稳定可靠的<strong>Windows定时播放软件</strong>，满足各种信息发布需求。</p>
+                        
+                        <ul>
+                            <li>企业宣传片自动播放软件</li>
+                            <li>展厅导览视频循环播放</li>
+                            <li>安全生产提示播报系统</li>
+                            <li>会议室信息发布系统</li>
+                            <li>员工培训视频定时播放</li>
+                            <li>多屏幕同步播放控制</li>
+                        </ul>
+                        
+                        <p><strong>插播功能应用：</strong>利用紧急插播发布企业重要通知，通过定时插播在员工休息时间自动播放企业文化宣传内容。</p>
+                        
+                        <!-- 应用场景下载按钮 -->
+                        <div style="text-align: center; margin: 30px 0;">
+                            <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-download"></i> 下载企业信息发布系统试用版
+                            </a>
+                            <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整企业信息发布功能</p>
+                        </div>
+                        
+                        <div class="keyword-list">
+                            <span class="keyword-tag">数字标牌软件</span>
+                            <span class="keyword-tag">企业信息发布系统</span>
+                            <span class="keyword-tag">会议室播放系统</span>
+                        </div>
+                    `;
+                }
+            });
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
