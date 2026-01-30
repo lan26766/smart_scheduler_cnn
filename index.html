@@ -69,14 +69,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 20px;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
             padding: 5px 0;
             border-bottom: 2px solid transparent;
@@ -223,6 +223,52 @@
         .btn-download:hover {
             background-color: transparent;
             color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-baidu {
+            background-color: #06a7ff;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid #06a7ff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-baidu:hover {
+            background-color: transparent;
+            color: #06a7ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-buy {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid #ffde59;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-buy:hover {
+            background-color: transparent;
+            color: #ffde59;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -711,7 +757,15 @@
                     </ul>
                 </nav>
                 
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="cta-button">立即下载</a>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="cta-button">立即下载</a>
+                    <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 10px 20px; font-size: 0.95rem;">
+                        <i class="fas fa-cloud-download-alt"></i> 百度网盘
+                    </a>
+                    <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 10px 20px; font-size: 0.95rem;">
+                        <i class="fas fa-shopping-cart"></i> 立即购买
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -734,10 +788,15 @@
             <p>一款专业的<strong>Windows定时播放软件</strong>，支持<strong>视频轮播</strong>、<strong>背景音乐</strong>定时播放、<strong>全屏播放</strong>与<strong>插播功能</strong>。广泛应用于<strong>校园广播系统</strong>、<strong>学校自动打铃</strong>、<strong>商场背景音乐系统</strong>、数字标牌、企业信息发布等场景。</p>
             
             <div class="hero-buttons">
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download">
+                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download">
                     <i class="fas fa-download"></i> 免费下载试用版
                 </a>
-                <a href="purchase.html" class="btn-primary">立即购买 (¥499永久授权)</a>
+                <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu">
+                    <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                </a>
+                <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-primary">
+                    <i class="fas fa-shopping-cart"></i> 立即购买 (¥499永久授权)
+                </a>
                 <a href="#features" class="btn-secondary">查看全部功能</a>
             </div>
         </div>
@@ -835,8 +894,14 @@
             
             <!-- 在功能区域后添加下载按钮 -->
             <div class="download-section">
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
                     <i class="fas fa-download"></i> 立即下载体验全部功能
+                </a>
+                <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                </a>
+                <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-shopping-cart"></i> 立即购买
                 </a>
                 <p style="color: #666; margin-top: 15px;">7天免费试用，包含软件全部功能</p>
             </div>
@@ -874,8 +939,14 @@
                 
                 <!-- 应用场景下载按钮 -->
                 <div style="text-align: center; margin: 30px 0;">
-                    <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                    <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
                         <i class="fas fa-download"></i> 下载校园广播系统试用版
+                    </a>
+                    <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                    </a>
+                    <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-shopping-cart"></i> 立即购买
                     </a>
                     <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用7天，体验完整校园广播功能</p>
                 </div>
@@ -921,8 +992,14 @@
             
             <!-- 截图区域后添加下载按钮 -->
             <div class="download-section">
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
                     <i class="fas fa-download"></i> 下载软件体验完整界面
+                </a>
+                <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                </a>
+                <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-shopping-cart"></i> 立即购买
                 </a>
             </div>
         </div>
@@ -957,11 +1034,17 @@
                     </div>
                     
                     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                        <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-primary" style="background-color: white; color: #27ae60; padding: 15px 40px;">
+                        <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-primary" style="background-color: white; color: #27ae60; padding: 15px 40px;">
                             <i class="fas fa-download"></i> 下载Windows安装包 (64位)
                         </a>
-                        <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-secondary" style="border-color: white; color: white; padding: 15px 40px;">
+                        <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-secondary" style="border-color: white; color: white; padding: 15px 40px;">
                             <i class="fas fa-download"></i> 下载Windows安装包 (32位)
+                        </a>
+                        <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="border-color: white; color: white; padding: 15px 40px;">
+                            <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                        </a>
+                        <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="border-color: white; color: white; padding: 15px 40px;">
+                            <i class="fas fa-shopping-cart"></i> 立即购买
                         </a>
                     </div>
                 </div>
@@ -1048,8 +1131,14 @@
             
             <!-- 常见问题后添加下载按钮 -->
             <div class="download-section">
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
+                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download" style="padding: 15px 50px; font-size: 1.2rem;">
                     <i class="fas fa-download"></i> 立即下载7天免费试用版
+                </a>
+                <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                </a>
+                <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 15px 50px; font-size: 1.2rem;">
+                    <i class="fas fa-shopping-cart"></i> 立即购买
                 </a>
                 <p style="color: #666; margin-top: 15px;">试用版包含软件全部功能，购买后可一键激活为正式版</p>
             </div>
@@ -1162,6 +1251,12 @@
                             <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
                                 <i class="fas fa-download"></i> 下载校园广播系统试用版
                             </a>
+                            <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                            </a>
+                            <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-shopping-cart"></i> 立即购买
+                            </a>
                             <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整校园广播功能</p>
                         </div>
                         
@@ -1192,6 +1287,12 @@
                             <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
                                 <i class="fas fa-download"></i> 下载商业背景音乐系统试用版
                             </a>
+                            <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                            </a>
+                            <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-shopping-cart"></i> 立即购买
+                            </a>
                             <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整背景音乐调度功能</p>
                         </div>
                         
@@ -1221,6 +1322,12 @@
                         <div style="text-align: center; margin: 30px 0;">
                             <a href="#download" class="btn-download" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
                                 <i class="fas fa-download"></i> 下载企业信息发布系统试用版
+                            </a>
+                            <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                            </a>
+                            <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="display: inline-block; padding: 12px 40px; font-size: 1.1rem;">
+                                <i class="fas fa-shopping-cart"></i> 立即购买
                             </a>
                             <p style="color: #666; margin-top: 10px; font-size: 0.95rem;">免费试用30天，体验完整企业信息发布功能</p>
                         </div>

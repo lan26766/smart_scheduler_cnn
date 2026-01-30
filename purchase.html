@@ -51,13 +51,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 20px;
         }
+        
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
             padding: 5px 0;
             border-bottom: 2px solid transparent;
@@ -217,6 +218,52 @@
         .btn-download:hover {
             background-color: transparent;
             color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-baidu {
+            background-color: #06a7ff;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid #06a7ff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-baidu:hover {
+            background-color: transparent;
+            color: #06a7ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-buy {
+            background-color: #ffde59;
+            color: #0d4d9c;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid #ffde59;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-buy:hover {
+            background-color: transparent;
+            color: #ffde59;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -462,7 +509,15 @@
                     </ul>
                 </nav>
                 
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="cta-button">免费下载</a>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="cta-button">免费下载</a>
+                    <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 10px 20px; font-size: 0.95rem;">
+                        <i class="fas fa-cloud-download-alt"></i> 百度网盘
+                    </a>
+                    <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 10px 20px; font-size: 0.95rem;">
+                        <i class="fas fa-shopping-cart"></i> 立即购买
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -476,8 +531,14 @@
             </div>
             
             <div style="text-align: center;">
-                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe" class="btn-download" style="padding: 18px 50px; font-size: 1.3rem;">
+                <a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe" class="btn-download" style="padding: 18px 50px; font-size: 1.3rem;">
                     <i class="fas fa-download"></i> 下载7天免费试用版
+                </a>
+                <a href="https://pan.baidu.com/s/1wd0c7TjQBdGd-441RL-Etw?pwd=1234" class="btn-baidu" style="padding: 18px 50px; font-size: 1.3rem;">
+                    <i class="fas fa-cloud-download-alt"></i> 百度网盘下载
+                </a>
+                <a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" class="btn-buy" style="padding: 18px 50px; font-size: 1.3rem;">
+                    <i class="fas fa-shopping-cart"></i> 立即购买
                 </a>
                 <p style="color: #666; margin-top: 20px; font-size: 1.1rem;">试用版包含软件全部功能，购买后可一键激活为正式版</p>
             </div>
@@ -602,9 +663,9 @@
                     </div>
                   <h3>购买渠道</h3>
                     <p class="contact-info"><i class="fas fa-store"></i> <strong>天空云共享软件官方商店：</strong></p>
-                    <p style="margin-bottom: 15px;"><a href="https://gumroad.com/l/smartscheduler" target="_blank">http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731</a></p>
+                    <p style="margin-bottom: 15px;"><a href="http://www.regsky.com/index.php?c=goods&a=info&zc_id=5731" target="_blank">点击购买</a></p>
                     
-                    <p class="contact-info"><i class="fas fa-university"></i> <strong>国内对公账户：</strong></p>
+                    <p class="contact-info"><i class="fas fa-university"></i> <strong>账户：</strong></p>
                     <p style="text-align: left; margin: 15px 0; padding: 15px; background-color: #f9f9f9; border-radius: 8px;">
                         公司名称：佛山市南海区伊贝姬文艺创作工作室<br>
                         开户银行：中国工商银行深圳市塘尾支行<br>
@@ -636,7 +697,7 @@
                         <li><a href="index.html#scenarios">应用场景</a></li>
                         <li><a href="purchase.html">购买与支持</a></li>
                         <li><a href="index.html#faq">常见问题</a></li>
-                        <li><a href="https://www.pdfbang.com/files/PlayScheduler_Setup.exe">软件下载</a></li>
+                        <li><a href="https://www.pdfbang.com/files/PlayScheduler_Setup_x64.exe">软件下载</a></li>
                     </ul>
                 </div>
                 
