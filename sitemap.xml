@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- 首页 -->
     <url>
         <loc>https://www.dingshibofang.com/</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-03-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.dingshibofang.com/images/pic1.png</image:loc>
+            <image:title>智能播放调度系统主界面</image:title>
+            <image:caption>Windows定时播放软件操作面板</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.dingshibofang.com/images/pic2.png</image:loc>
+            <image:title>播放计划编辑界面</image:title>
+            <image:caption>校园广播系统时间表设置</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.dingshibofang.com/images/pic3.png</image:loc>
+            <image:title>插播功能设置界面</image:title>
+            <image:caption>紧急插播与定时插播管理</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.dingshibofang.com/images/pic4.png</image:loc>
+            <image:title>全屏播放效果</image:title>
+            <image:caption>视频轮播软件大屏展示</image:caption>
+        </image:image>
     </url>
+    
+    <!-- 购买页面 -->
     <url>
         <loc>https://www.dingshibofang.com/purchase.html</loc>
-        <lastmod>2026-02-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <lastmod>2026-03-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
     </url>
+    
 </urlset>

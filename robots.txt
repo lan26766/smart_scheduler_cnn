@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# 允许百度蜘蛛
+User-agent: Baiduspider
+Allow: /
+
+# 允许必应蜘蛛
+User-agent: Bingbot
+Allow: /
+
+# 允许谷歌蜘蛛
+User-agent: Googlebot
+Allow: /
+
+# 禁止访问敏感文件
+Disallow: /admin/
+Disallow: /config/
+Disallow: /temp/
+Disallow: /*.zip$
+Disallow: /*.exe$
+
+# 网站地图
+Sitemap: https://www.dingshibofang.com/sitemap.xml
+
+# 抓取频率设置
+Crawl-delay: 1
