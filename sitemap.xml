@@ -8,7 +8,7 @@
     <!-- 首页 -->
     <url>
         <loc>https://www.dingshibofang.com/</loc>
-        <lastmod>2026-03-15</lastmod>
+        <lastmod>2026-04-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -36,9 +36,67 @@
     <!-- 购买页面 -->
     <url>
         <loc>https://www.dingshibofang.com/purchase.html</loc>
-        <lastmod>2026-03-15</lastmod>
+        <lastmod>2026-04-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+    </url>
+    
+    <!-- 工具猫天水站 - 智效工具中心 -->
+    <url>
+        <loc>https://tianshuigongju.com/</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 工具猫天水站旗下软件页面 -->
+    <url>
+        <loc>https://tianshuigongju.com/screen-recorder</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/audio-editor</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/lan-transfer</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/office-timer</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/file-manager</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/eye-care</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tianshuigongju.com/alarm-clock</loc>
+        <lastmod>2026-04-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     
 </urlset>
